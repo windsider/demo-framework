@@ -1,4 +1,4 @@
-# acoustic-task
+# demo-task
 
 How to Launch Tests
 

@@ -1,7 +1,6 @@
 package pages;
 
 import static com.codeborne.selenide.Selenide.$$;
-import static utililty.Log.getInfoLog;
 
 import java.util.ArrayList;
 

@@ -7,7 +7,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.CollectionCondition.size;
-import static utililty.Log.getInfoLog;
+import static utililty.Log.infoLog;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.testng.ScreenShooter;
@@ -34,16 +34,16 @@ public class SearchResultTest extends BaseSetup {
   @Test(description = "verifying default status of one way radio button is active")
   @Severity(SeverityLevel.MINOR)
   public void testOneWayRadioButtonStatus() {
-    final String RADIO_BUTTON_STATUS = new RadioButton().getOneWayRadioButtonStatus();
-    Assert.assertTrue(RADIO_BUTTON_STATUS.contains("active"));
+    final String radioButtonStatus = new RadioButton().getOneWayRadioButtonStatus();
+    Assert.assertTrue(radioButtonStatus.contains("active"));
   }
 
   @Test(description = "verifying status of electronic registration checkbox after checking it")
   @Severity(SeverityLevel.NORMAL)
   public void testERegistrationCheckBoxStatus() {
-    final String CHECK_BOX_STATUS =
+    final String checkBoxStatus =
         new ERegistrationFunction().checkERegistrationCheckbox().getERegistrationCheckBoxStatus();
-    Assert.assertTrue(CHECK_BOX_STATUS.contains("checked"));
+    Assert.assertTrue(checkBoxStatus.contains("checked"));
   }
 
   @Test(
@@ -63,7 +63,6 @@ public class SearchResultTest extends BaseSetup {
     new DateFilters().getListOfDateFilters().filter(Condition.visible).shouldHave(size(4));
   }
 
-  @Parameters({"trainNumberExp", "departureExp"})
   @Test(description = "displaying number and departure time of listed trains")
   @Severity(SeverityLevel.CRITICAL)
   public void testDisplayingTrainNumberAndDepartureTime() {
@@ -71,7 +70,7 @@ public class SearchResultTest extends BaseSetup {
         .getRetievedTrainData()
         .forEach(
             train -> {
-              getInfoLog(train.toString());
+              infoLog(train.toString());
               Assert.assertTrue(train.toString().contains("trainNumber"));
               Assert.assertTrue(train.toString().contains("departureTime"));
               Assert.assertTrue(train.toString().contains("minutes"));

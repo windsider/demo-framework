@@ -1,16 +1,13 @@
 package utililty;
 
+import static utililty.Config.get;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
-
+import com.codeborne.selenide.Configuration;
 import static com.codeborne.selenide.Configuration.baseUrl;;
 import static com.codeborne.selenide.Configuration.startMaximized;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.closeWebDriver;
-import static utililty.Config.get;
-
-
-import com.codeborne.selenide.Configuration;
 
 import com.codeborne.selenide.logevents.SelenideLogger;
 
