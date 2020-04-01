@@ -24,7 +24,7 @@ Before using this way you should run testng.xml
 
 To get allure test report after running tests in the project root directory run command 'mvn allure:serve' or in target directory run command 'allure serve'
 
-In case of failed test screenshot is saved test-result/reports directory
+In case of failed test a screenshot is saved test-result/reports directory
 
 
 

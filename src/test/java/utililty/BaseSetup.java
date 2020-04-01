@@ -1,8 +1,9 @@
 package utililty;
 
 import static utililty.Config.get;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import com.codeborne.selenide.Configuration;
 import static com.codeborne.selenide.Configuration.baseUrl;;
 import static com.codeborne.selenide.Configuration.startMaximized;
@@ -15,7 +16,7 @@ import io.qameta.allure.selenide.AllureSelenide;
 
 public class BaseSetup {
 
-  @BeforeTest
+  @BeforeClass
   public void setUp() {
     System.setProperty(get("webdriver"), get("webdriverPath"));
     System.setProperty(get("browserProperty"), get("browser"));
@@ -30,7 +31,7 @@ public class BaseSetup {
     open(baseUrl);
   }
 
-  @AfterTest
+  @AfterClass
   public void tearDown() {
     closeWebDriver();
   }
