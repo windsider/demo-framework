@@ -1,15 +1,18 @@
 package tests;
 
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
+import org.testng.SkipException;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.CollectionCondition.size;
+import static utililty.Config.get;
 import static utililty.Log.infoLog;
 
 import com.codeborne.selenide.Condition;
+
 import com.codeborne.selenide.testng.ScreenShooter;
 
 import io.qameta.allure.Flaky;
@@ -26,8 +29,8 @@ import pages.TrainDataProvider;
 @Listeners({ScreenShooter.class})
 public class SearchResultTest extends BaseSetup {
   @Parameters({"departureStation", "arrivalStation"})
-  @BeforeClass(alwaysRun = true)
-  public void beforeClass(String departureStation, String arrivalStation) {
+  @BeforeTest(alwaysRun = true)
+  public void beforeMethod(String departureStation, String arrivalStation) {
     new SearchPage().searchTrain(departureStation, arrivalStation);
   }
 
@@ -82,7 +85,10 @@ public class SearchResultTest extends BaseSetup {
   @Flaky
   @Severity(SeverityLevel.MINOR)
   public void testNumberOfLoadedImages(String element) {
-    final int numberOfLoadedImages = new LoadedElements().getNumberOfPageElements(element);
+    if (!get("testRunOption").equals("local")) {
+      throw new SkipException("Test ignored");
+    }
+    final long numberOfLoadedImages = new LoadedElements().getNumberOfPageElements(element);
     Assert.assertTrue(numberOfLoadedImages > 5);
   }
 }

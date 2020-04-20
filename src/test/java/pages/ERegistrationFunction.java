@@ -2,6 +2,8 @@ package pages;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
+import static org.openqa.selenium.By.cssSelector;
+import static org.openqa.selenium.By.xpath;
 
 import com.codeborne.selenide.ElementsCollection;
 
@@ -11,11 +13,11 @@ import io.qameta.allure.Step;
 
 public class ERegistrationFunction {
   private static final By E_REGISTRATION_CHECK_BOX =
-      By.xpath("//*[@id='sch-filter-main-collapse']//span[@data-filter-value='eregistration']");
+      xpath("//*[@id='sch-filter-main-collapse']//span[@data-filter-value='eregistration']");
   private static final By E_REGISTRATION_CHECK_BOX_STYLER =
-      By.xpath("//input[@name='form-ER']/parent::div");
+      xpath("//input[@name='form-ER']/parent::div");
   private static final By LIST_OF_DISPLAYED_TRAINS =
-      By.cssSelector(".sch-table__row-wrap:not(.hidden)");
+      cssSelector(".sch-table__row-wrap:not(.hidden)");
 
   @Step("check electronic registration checkbox")
   public ERegistrationFunction checkERegistrationCheckbox() {

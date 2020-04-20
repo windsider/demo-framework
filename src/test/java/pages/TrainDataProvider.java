@@ -1,6 +1,7 @@
 package pages;
 
 import static com.codeborne.selenide.Selenide.$$;
+import static org.openqa.selenium.By.cssSelector;
 
 import java.util.ArrayList;
 
@@ -14,7 +15,7 @@ import io.qameta.allure.Step;
 import utililty.Train;
 
 public class TrainDataProvider {
-  private static final By LIST_OF_TRAINS = By.className("sch-table__row-wrap");
+  private static final By LIST_OF_TRAINS = cssSelector(".js-row from_aternoon to_aternoon");
   private static final List<Train> TRAIN_DATA = new ArrayList<>();
 
   @Step("get number and departure time of listed trains")
