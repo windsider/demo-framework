@@ -3,8 +3,10 @@ package utililty;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
+import pages.RadioButton;
 
 import static com.codeborne.selenide.WebDriverRunner.closeWebDriver;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static utililty.Config.get;
 import static utililty.Driver.runLocal;
 import static utililty.Driver.runRemote;
@@ -27,6 +29,9 @@ public class BaseSetup {
 
     @AfterTest
     public void tearDown() {
+        RadioButton radioButton = new RadioButton();
+        radioButton.driver.quit();
         closeWebDriver();
+
     }
 }
